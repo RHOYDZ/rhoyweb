@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RHOY PABLO</title>;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @layer utilities {
+      @keyframes walkGradient {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 200% 0%; }
+      }
+      .animate-walk {
+        background-size: 200% 100%;
+        background-image: linear-gradient(270deg, #3b0764, #2e1065, #5b21b6, #3b0764);
+
+        animation: walkGradient 20s linear infinite;
+      }
+      .mist-overlay::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        pointer-events: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 shadow-lg overflow-hidden text-white font-bold animate-walk" style="font-family: 'Poppins', sans-serif;">
+    <div class="mist-overlay absolute inset-0 z-0"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-8 flex items-center">
+
+        <!-- Left: Name -->
+        <div class="text-4xl font-extrabold tracking-widest glow-text mr-auto">
+          RHOY
+        </div>
+      
+        <!-- Center: Nav Links -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-12 text-lg">
+            <a href="#top" class="nav-link hover:text-fuchsia-300 transition duration-300">Home</a>
+            <a href="#about" class="nav-link hover:text-fuchsia-300 transition duration-300">About Me</a>
+            <a href="#include-about" class="nav-link hover:text-fuchsia-300 transition duration-300">Systems</a>
+          </div>     
+      </div>
+      
+  </nav>
+
+
+
+  <style>
+    .breathing-bg {
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .breathing-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(270deg, #0f0c29, #302b63, #0f0c29);
+      background-size: 500% 500%;
+      animation: breathingGradient 8s ease-in-out infinite;
+      opacity: 1;
+    }
+  
+    @keyframes breathingGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      filter: blur(2px);
+      animation: floatUp 16s linear infinite;
+      opacity: 0.6;
+    }
+  
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+  
+    /* Random circle placements */
+    .circle1 { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
+    .circle2 { width: 40px; height: 40px; left: 30%; animation-delay: 2s; }
+    .circle3 { width: 100px; height: 100px; left: 50%; animation-delay: 4s; }
+    .circle4 { width: 60px; height: 60px; left: 70%; animation-delay: 1s; }
+    .circle5 { width: 120px; height: 120px; left: 85%; animation-delay: 3s; }
+  
+    .fade-bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(to top, white 10%, transparent);
+      z-index: 5;
+    }
+  </style>
+  
+  <header id="home" class="breathing-bg bg-gray-950 text-white min-h-screen flex items-center justify-center px-6">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0 mix-blend-overlay opacity-40">
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    <!-- Floating circles -->
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+    <div class="floating-circle circle3"></div>
+    <div class="floating-circle circle4"></div>
+    <div class="floating-circle circle5"></div>
+  
+    <!-- Soft bottom fade -->
+    <div class="fade-bottom"></div>
+  
+    <!-- Content -->
+    <div class="relative z-10 flex flex-col md:flex-row items-center space-y-10 md:space-y-0 md:space-x-12">
+      <!-- Left: Profile -->
+      <div class="w-[28rem] h-[28rem] rounded-full overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-105">
+        <img src="me.jpg" alt="Rhoy D. Pablo" class="w-full h-full object-cover">
+      </div>
+    
+      <!-- Right: Text -->
+      <div class="text-center md:text-left">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Hi, I'm Rhoy D. Pablo</h1>
+        <p class="text-2xl font-bold text-fuchsia-300 bg-gray-900 bg-opacity-40 px-6 py-3 rounded-xl inline-block">
+            Get to know me better
+          </p>
+          
+      </div>
+  </header>
+  
+  <section id="about" class="min-h-screen bg-gradient-to-b from-white via-white to-purple-100 text-gray-900 flex items-center px-6 py-32">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      
+      
+<!-- Container -->
+    <div class="w-[32rem] h-[32rem] overflow-hidden transition-all duration-1000 ease-out transform opacity-0 -translate-x-full"
+        id="scrollImage">
+    <img src="okay.png" alt="About Rhoy"
+        class="w-full h-full object-contain fade-bottom-image">
+    </div>
+
+    <style>
+    .fade-bottom-image {
+        -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+        mask-image: linear-gradient(to top, transparent 0%, black 40%);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+    }
+    </style>
+
+  
+<!-- Right: Text Content -->
+<div id="scrollText"
+     class="text-center md:text-left md:flex-1 opacity-0 translate-x-full transition-all duration-1000 ease-out">
+     <h2 class="text-7xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-fuchsia-500 to-purple-700 animate-breathing-gradient">
+        About Me
+      </h2>
+      <style>
+        @keyframes breathing-gradient {
+          0%, 100% {
+            background-position: 0% 50%;
+            transform: scale(1);
+          }
+          50% {
+            background-position: 100% 50%;
+            transform: scale(1.03);
+          }
+        }
+        
+        .animate-breathing-gradient {
+          background-size: 200% 200%;
+          animation: breathing-gradient 4s ease-in-out infinite;
+        }
+        </style>
+              
+    <p class="text-2xl leading-relaxed text-gray-800 mb-8">
+        I’m <span class="text-purple-900 font-semibold">Rhoy D. Pablo</span>, a system developer focused on building elegant, functional web systems.
+        I’m passionate about turning ideas into powerful and intuitive digital experiences.
+    </p>
+    <p class="text-2xl leading-relaxed text-gray-800">
+        With a strong foundation in both design and backend logic, I merge creativity and performance in every solution I create.
+    </p>
+    </div>
+
+    </div>
+  </section>
+  
+  <div id="include-about"></div>
+
+    <script>
+    fetch("fod/mod.html")
+        .then(response => response.text())
+        .then(data => {
+        document.getElementById("include-about").innerHTML = data;
+        });
+    </script>
+
+  
+  
+  
+  
+  
+  
+  <script src="smo.js"></script>
+</body>
+</html>
