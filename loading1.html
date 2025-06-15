@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading Cube</title>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get('target') || 'index.html';
+    setTimeout(() => {
+      window.location.href = target;
+    }, 3000); // 3 seconds delay
+  </script>
+</head>
+<body>
+    <style>
+        body {
+          margin: 0;
+          height: 100vh;
+          overflow: hidden;
+          background: radial-gradient(ellipse at top, #1a001f 0%, #0a0012 100%);
+          color: #e0d5ff;
+          font-family: 'Segoe UI', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          position: relative;
+        }
+    
+        canvas#codeRain {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 0;
+        }
+    
+        .scene {
+          width: 150px;
+          height: 150px;
+          perspective: 1000px;
+          position: relative;
+          z-index: 1;
+        }
+    
+        .glow-shadow {
+          position: absolute;
+          bottom: -40px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 120px;
+          height: 30px;
+          background: radial-gradient(circle, rgba(153, 102, 255, 0.25) 0%, transparent 80%);
+          filter: blur(20px);
+          z-index: 0;
+        }
+    
+        .cube {
+          width: 150px;
+          height: 150px;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: spin 6s infinite linear;
+        }
+    
+        .cube-face {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          background-color: rgba(186, 140, 255, 0.1);
+          border: 2px solid #c084fc;
+          box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
+        }
+    
+        .face-front  { transform: rotateY(  0deg) translateZ(75px); }
+        .face-back   { transform: rotateY(180deg) translateZ(75px); }
+        .face-right  { transform: rotateY( 90deg) translateZ(75px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(75px); }
+        .face-top    { transform: rotateX( 90deg) translateZ(75px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(75px); }
+    
+        @keyframes spin {
+          from { transform: rotateX(0deg) rotateY(0deg); }
+          to   { transform: rotateX(360deg) rotateY(360deg); }
+        }
+    
+        .loading-text {
+          margin-top: 30px;
+          font-size: 20px;
+          color: #c084fc;
+          animation: blink 1.5s infinite ease-in-out;
+          text-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+          letter-spacing: 1.5px;
+          z-index: 1;
+        }
+    
+        @keyframes blink {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 1; }
+        }
+      </style>
+        
+
+        <div class="scene">
+          <div class="cube">
+            <div class="cube-face face-front"></div>
+            <div class="cube-face face-back"></div>
+            <div class="cube-face face-right"></div>
+            <div class="cube-face face-left"></div>
+            <div class="cube-face face-top"></div>
+            <div class="cube-face face-bottom"></div>
+          </div>
+          <div class="glow-shadow"></div>
+        </div>
+
+
+
+        
+        <div class="inner-glow-core"></div>
+
+
+        <style>
+.inner-glow-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: #c084fc;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: intenseGlow 3s ease-out forwards;
+  z-index: 0;
+  box-shadow:
+    0 0 30px #c084fc,
+    0 0 60px #c084fc,
+    0 0 90px #ffffff;
+}
+@keyframes intenseGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 1;
+  }
+}
+
+
+        </style>
+
+
+        <div class="loading-ring"></div>
+
+        <style>
+.loading-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 10px solid transparent;
+  border-top: 10px solid #c084fc;
+  animation: ringSpin 1.5s linear infinite, pulse 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+
+@keyframes ringSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+        </style>
+
+</body>
+</html>

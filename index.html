@@ -26,11 +26,13 @@
       }
     }
   </style>
+
+
+  
 </head>
 <body>
-  <div id="top"></div>
 <!-- NAVIGATION -->
-<nav class="sticky top-0 z-50 shadow-lg overflow-hidden text-white font-bold animate-walk" style="font-family: 'Poppins', sans-serif;">
+  <nav class="sticky top-0 z-50 shadow-lg overflow-hidden text-white font-bold animate-walk" style="font-family: 'Poppins', sans-serif; ">
     <div class="mist-overlay absolute inset-0 z-0"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 py-8 flex items-center">
 
@@ -48,7 +50,7 @@
       </div>
       
   </nav>
-
+  <div id="top"></div>
 
 
   <style>
@@ -145,7 +147,29 @@
     
       <!-- Right: Text -->
       <div class="text-center md:text-left">
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Hi, I'm Rhoy D. Pablo</h1>
+        
+        <div class="relative my-12">
+          <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-violet-200 via-violet-300 to-violet-400 bg-clip-text text-transparent animate-breathe leading-[1.2] pb-3">
+            Hi, I'm Rhoy D. Pablo
+          </h1>
+        </div>
+        
+        <style>
+        @keyframes breathe {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        
+        .animate-breathe {
+          background-size: 200% 200%;
+          animation: breathe 4s ease-in-out infinite;
+        }
+        </style>
+        
         <p class="text-2xl font-bold text-fuchsia-300 bg-gray-900 bg-opacity-40 px-6 py-3 rounded-xl inline-block">
             Get to know me better
           </p>
@@ -212,7 +236,7 @@
     </div>
   </section>
   
-  <div id="include-about"></div>
+  <div id="include-about">
 
     <script>
     fetch("fod/mod.html")
@@ -221,7 +245,7 @@
         document.getElementById("include-about").innerHTML = data;
         });
     </script>
-
+  </div>
   
   
   
